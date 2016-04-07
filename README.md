@@ -1,4 +1,5 @@
-**Wrap plugin**
+Wrap plugin
+-----------
 
 This is a plugin that you can install to your Cordova project if you need to run
 'unsafe' JavaScript code in your Cordova app for Windows.
@@ -65,4 +66,4 @@ as expected. The code is mostly based on the Cordova platform for Windows Phone
    Based on [this](https://github.com/apache/cordova-wp8/blob/master/template/cordovalib/XHRHelper.cs)
    and [this](https://wat.codeplex.com/SourceControl/latest#windows-phone-8-development-project/site2AppWP8/XHR/injectedXHR.script).
  - **scripts/windows/enableWrap.js** - When `cordova prepare`ing your application
-   hook script will point index_wrap.html to your app's startup page
+   this hook script will tell index_wrap.js to load your app's startup page
