@@ -1,17 +1,16 @@
-Wrap plugin
------------
+# Cordova Wrap Plugin
 
-This is a plugin that you can install to your Cordova project if you need to run
-'unsafe' JavaScript code in your Cordova app for Windows.
+This is a plugin that enables the use of 'unsafe' JavaScript code in Cordova
+apps for Windows.
 
-The plugin adds a index_wrap.html file to your project which holds a WebView for
-your Cordova app. You have to set this as the startup file in the App Manifests.
-It also replaces the XMLHttpRequest object in the WebView to allow cross-domain
-web requests.
+The plugin adds an index_wrap.html file to the Windows platform project which holds
+a WebView for the actual Cordova app content. It must be set as the startup file in
+the App Manifests. The plugin also replaces the XMLHttpRequest object in the WebView
+to allow cross-domain web requests.
 
-The basic idea is that the index_wrap-file will load all available Cordova plugins.
-Your app code however will get a customized cordova.js which only loads the
-platform-independent plugin code and forwards any `cordova.exec()` calls to
+The basic idea is that the index_wrap.html-file will load all available Cordova plugins.
+The Cordova app code however will get a customized cordova.js which only loads the
+platform-independent plugin code and forwards all `cordova.exec()` calls to
 `window.external.notify`. The 'outer' Cordova runtime can now invoke the actual
 plugin proxy JavaScript and feed the response back into the WebView. Ideally all
 existing Cordova plugins for Windows will continue to work without modification.
@@ -65,5 +64,4 @@ as expected. The code is mostly based on the Cordova platform for Windows Phone
  - **www/XMLHttpRequest.js** - Forwards AJAX requests inside the WebView to `cordova.exec()`.
    Based on [this](https://github.com/apache/cordova-wp8/blob/master/template/cordovalib/XHRHelper.cs)
    and [this](https://wat.codeplex.com/SourceControl/latest#windows-phone-8-development-project/site2AppWP8/XHR/injectedXHR.script).
- - **scripts/windows/enableWrap.js** - When `cordova prepare`ing your application
-   this hook script will tell index_wrap.js to load your app's startup page
+ - **scripts/windows/enableWrap.js** - Will run during `cordova prepare`, tells index_wrap.js where to find the app's startup page
