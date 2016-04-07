@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-wrap" version="1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>Wrap</name>
+    <platform name="windows">
+
+        <!-- It would be nice if I could overide the content here, but this doesn't seem to work -->
+        <!-- <content src="index_wrap.html" /> -->
+
+        <hook type="after_prepare" src="scripts/windows/enableWrap.js" />
+
+        <asset src="src/windows/www/js/index_wrap.js" target="js/index_wrap.js" />
+        <asset src="src/windows/www/index_wrap.html" target="index_wrap.html" />
+        <asset src="src/windows/www/cordova_wrap.js" target="cordova_wrap.js" />
+        <asset src="src/windows/www/cordova.js" target="cordova.js" />
+
+        <js-module src="www/XMLHttpRequest.js" name="XMLHttpRequest">
+            <runs/>
+        </js-module>
+
+        <js-module src="src/windows/XMLHttpRequestProxy.js" name="XMLHttpRequestProxy">
+            <runs/>
+        </js-module>
+
+        <js-module src="src/windows/Wrap.js">
+        </js-module>
+
+    </platform>
+</plugin>
