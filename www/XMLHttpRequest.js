@@ -263,7 +263,7 @@
                             }
                         };
 
-                        cordova.exec(onSuccess, onError, "XMLHttpRequest", "send", order);
+                        cordova.exec(onSuccess, function () { /* Should not happen */ }, "XMLHttpRequest", "send", order);
                     };
                     this.isAsync ? setTimeout(funk, 0) : funk();
                 }
